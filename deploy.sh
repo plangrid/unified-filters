@@ -2,7 +2,9 @@
 # Build the deck and publish dist/ to the gh-pages branch.
 set -euo pipefail
 
-BASE=/unified-filters-deck/
+# GHE subdomain isolation serves at pages.HOST/<user>/<repo>/, so the base
+# must include the username segment, not just the repo.
+BASE=/aburusb/unified-filters-deck/
 
 npx slidev build --base "$BASE" --out dist
 touch dist/.nojekyll   # serve asset dirs verbatim (no Jekyll processing)

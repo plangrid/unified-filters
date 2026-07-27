@@ -13,11 +13,12 @@ npm run dev        # http://localhost:3030
 
 ## Publish to GitHub Enterprise Pages
 
-The deck is served as a project page at `/unified-filters-deck/`, so it must be
-built with a matching base path:
+GHE subdomain isolation serves the site at
+`pages.git.autodesk.com/<user>/<repo>/`, so the base must include the **username**
+segment (not just the repo), or every asset 404s:
 
 ```bash
-npx slidev build --base /unified-filters-deck/ --out dist
+npx slidev build --base /aburusb/unified-filters-deck/ --out dist
 ```
 
 Publish the built `dist/` to the `gh-pages` branch (Pages source = `gh-pages`):
