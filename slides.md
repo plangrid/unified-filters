@@ -63,7 +63,7 @@ PM track
 <div class="flex flex-col gap-3 max-w-5xl">
   <div class="give" v-click="1"><span class="gn">Filters Panel</span><span class="gd">The full drilldown panel — now unified across every tool.</span></div>
   <div class="give" v-click="2"><span class="gn">Quick Filters</span><span class="gd">One-tap presets for faster access.</span></div>
-  <div class="give" v-click="3"><span class="gn">Saved Filters</span><span class="gd">Faster access to commonly used filters in a project.</span></div>
+  <div class="give" v-click="3"><span class="gn">Saved Filters</span><span class="gd">Faster access to commonly used filters in a project or account.</span></div>
 </div>
 
 ---
