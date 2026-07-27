@@ -402,7 +402,7 @@ class: text-center
 </div>
 <div class="tile" v-click="3"><strong>③ screen-integration — flag gating</strong>
 <ul class="tlist">
-<li>Entry point (bar or icon)</li>
+<li>Entry point (Quick filters or Toolbar icon)</li>
 <li>Onboarding tooltip</li>
 <li>Launch the panel</li>
 <li>Observe store → query</li>
