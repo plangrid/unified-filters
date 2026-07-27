@@ -101,7 +101,7 @@ PM track
 
 <div class="flex gap-12 items-center mt-3">
   <div class="flex-1 max-w-lg">
-    <div class="text-2xl" style="color:#e6e6ea; line-height:1.5"><span class="a">Faster access</span> to commonly used filters inside a project.</div>
+    <div class="text-2xl" style="color:#e6e6ea; line-height:1.5"><span class="a">Faster access</span> to commonly used filters inside a project or account.</div>
     <div class="text-lg mt-4" style="color:#a8a8b0; line-height:1.6">Save a filter combination once, then reapply it anytime, anywhere (Mobile & Web).</div>
   </div>
   <div class="shots">
