@@ -252,25 +252,25 @@ class: text-center
 # Applying a filter — inside the framework
 
 <div class="flow mt-8">
-  <div class="fbox amber"><span class="n">Filters Panel /<br/>Quick Filters</span></div>
-  <div class="conn h"></div>
-  <div class="fbox amber"><span class="n">FiltersModel<br/>Holder</span></div>
+  <div class="fbox amber" v-click="1"><span class="n">Filters Panel /<br/>Quick Filters</span></div>
   <div class="conn h" v-click="1"></div>
-  <div class="fbox dash" v-click="1"><span class="n">Updater</span></div>
+  <div class="fbox amber" v-click="1"><span class="n">FiltersModel<br/>Holder</span></div>
   <div class="conn h" v-click="2"></div>
-  <div class="fbox dash" v-click="2"><span class="n">Store</span></div>
+  <div class="fbox dash" v-click="2"><span class="n">Updater</span></div>
   <div class="conn h" v-click="3"></div>
-  <div class="fbox amber" v-click="3"><span class="n">FiltersScope<br/>Repository</span></div>
-  <div class="conn h" v-click="3"></div>
-  <div class="fbox amber" v-click="3"><span class="n">Persistence</span></div>
+  <div class="fbox dash" v-click="3"><span class="n">Store</span></div>
+  <div class="conn h" v-click="4"></div>
+  <div class="fbox amber" v-click="4"><span class="n">FiltersScope<br/>Repository</span></div>
+  <div class="conn h" v-click="4"></div>
+  <div class="fbox amber" v-click="4"><span class="n">Persistence</span></div>
 </div>
 
 <div class="flow-notes mt-10 max-w-4xl mx-auto">
-  <div class="note">Each filters presentation (<span class="a">Filters Panel</span> / <span class="a">Quick Filters</span>) is injected with its <span class="a">FiltersScope</span>'s <span class="a">FiltersModelHolder</span>.</div>
-  <div class="note" v-click="1">The <span class="a">Holder</span> takes the filter change and dispatches the <span class="a">Updater</span>, alongside analytics.</div>
-  <div class="note" v-click="2">The <span class="a">Updater</span> maps it through the <b>DomainFiltersModelMapper</b> and updates the <span class="a">Store</span>.</div>
-  <div class="note" v-click="3">The <span class="a">Store</span> maps to <b>FilterQueryParameters</b>, then the <span class="a">Repository</span> serializes &amp; persists it.</div>
-  <div class="note" v-click="4"><span class="a">currentFilter</span> emits — the panel and the list observe that one stream.</div>
+  <div class="note" v-click="1">Each filters presentation (<span class="a">Filters Panel</span> / <span class="a">Quick Filters</span>) is injected with its <span class="a">FiltersScope</span>'s <span class="a">FiltersModelHolder</span>.</div>
+  <div class="note" v-click="2">The <span class="a">Holder</span> takes the filter change and dispatches the <span class="a">Updater</span>, alongside analytics.</div>
+  <div class="note" v-click="3">The <span class="a">Updater</span> maps it through the <b>DomainFiltersModelMapper</b> and updates the <span class="a">Store</span>.</div>
+  <div class="note" v-click="4">The <span class="a">Store</span> maps to <b>FilterQueryParameters</b>, then the <span class="a">Repository</span> serializes &amp; persists it.</div>
+  <div class="note" v-click="5"><span class="a">currentFilter</span> emits — the panel and the list observe that one stream.</div>
 </div>
 
 <div class="flegend">
