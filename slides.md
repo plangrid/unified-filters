@@ -273,7 +273,7 @@ class: text-center
   <div class="note" v-click="5"><span class="a">currentFilter</span> emits — the panel and the list observe that one stream.</div>
 </div>
 
-<div class="flegend">
+<div class="flegend" v-click="1">
   <div class="k"><span class="sw amber"></span> framework-provided</div>
   <div class="k"><span class="sw dash"></span> provided<span class="sep">·</span>overridable</div>
   <div class="k"><span class="sw"></span> you implement</div>
