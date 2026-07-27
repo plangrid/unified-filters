@@ -266,7 +266,7 @@ class: text-center
 </div>
 
 <div class="flow-notes mt-10 max-w-4xl mx-auto">
-  <div class="note">Each filters presentation (<span class="a">Filters Panel</span> / <span class="a">Quick Filters</span>) is injected with its <span class="a">FiltersScope</span>'s <span class="a">FiltersModelHolder</span> — the single entry point for a change.</div>
+  <div class="note">Each filters presentation (<span class="a">Filters Panel</span> / <span class="a">Quick Filters</span>) is injected with its <span class="a">FiltersScope</span>'s <span class="a">FiltersModelHolder</span>.</div>
   <div class="note" v-click="1">The <span class="a">Holder</span> takes the filter change and dispatches the <span class="a">Updater</span>, alongside analytics.</div>
   <div class="note" v-click="2">The <span class="a">Updater</span> maps it through the <b>DomainFiltersModelMapper</b> and updates the <span class="a">Store</span>.</div>
   <div class="note" v-click="3">The <span class="a">Store</span> maps to <b>FilterQueryParameters</b>, then the <span class="a">Repository</span> serializes &amp; persists it.</div>
