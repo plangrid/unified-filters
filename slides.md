@@ -281,18 +281,6 @@ class: text-center
 </div>
 
 ---
-layout: center
-class: text-center
----
-
-<div class="text-2xl font-bold" style="color:var(--amber)">How a Filter is Applied</div>
-<div class="muted mt-1">Panel → Holder → Updater (Mapper → Store) → Repository → persistence</div>
-
-<video controls muted class="mediaframe mx-auto mt-5 max-h-95">
-  <source src="/ApplyPipeline.mp4" type="video/mp4" />
-</video>
-
----
 
 # Entering a screen — the read path
 
