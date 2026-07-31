@@ -303,9 +303,9 @@ class: text-center
   <div class="conn h" v-click="2"></div>
   <div class="fbox dash" v-click="2"><span class="n">Store</span></div>
   <div class="conn h" v-click="3"></div>
-  <div class="fbox" v-click="3"><span class="n">DisplayNames<br/>Resolver</span></div>
-  <div class="conn h" v-click="3"></div>
   <div class="fbox dash" v-click="3"><span class="n">FiltersModel<br/>Provider</span></div>
+  <div class="conn h" v-click="3"></div>
+  <div class="fbox" v-click="3"><span class="n">DisplayNames<br/>Resolver</span></div>
   <div class="conn h" v-click="4"></div>
   <div class="fbox amber" v-click="4"><span class="n">FiltersModel<br/>Holder</span></div>
   <div class="conn h" v-click="4"></div>
