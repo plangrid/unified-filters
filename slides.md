@@ -297,7 +297,7 @@ class: text-center
   <div class="conn h" v-click="4"></div>
   <div class="fbox amber" v-click="4"><span class="n">FiltersModel<br/>Holder</span></div>
   <div class="conn h" v-click="4"></div>
-  <div class="fbox amber" v-click="4"><span class="n">Filters Presentation</span></div>
+  <div class="fbox amber" v-click="4"><span class="n">Filters<br/>Presentations</span></div>
 </div>
 
 <div class="flow mt-5" v-click="5">
@@ -311,8 +311,8 @@ class: text-center
 <div class="flow-notes mt-8 max-w-4xl mx-auto">
   <div class="note" v-click="2">On open, the <span class="a">Store</span> reads the persisted <b>FilterQueryParameters</b> from the <span class="a">Repository</span>…</div>
   <div class="note" v-click="3">The <span class="a">FiltersModelProvider</span> maps it to <span class="a">FiltersModel</span> and hydrates stored ids into names via the <b>DisplayNamesResolver</b>.</div>
-  <div class="note" v-click="4">The <span class="a">FiltersModelHolder</span> = <span class="a">Provider</span> (read) + <span class="a">Updater</span> (write) — the <span class="a">filters presentation</span> observes it.</div>
-  <div class="note" v-click="5">Meanwhile <b>the screen</b> observes the <span class="a">Store's currentFilter</span> — the <b>list</b> renders filtered.</div>
+  <div class="note" v-click="4">The <span class="a">FiltersModelHolder</span> = <span class="a">Provider</span> (read) + <span class="a">Updater</span> (write) — the <span class="a">filters presentations</span> observe it.</div>
+  <div class="note" v-click="5">Meanwhile <b>the screen</b> observes the <span class="a">Store</span>'s <span class="a">currentFilter</span> — the <b>list</b> renders filtered.</div>
 </div>
 
 <div class="flegend" v-click="1">
@@ -334,7 +334,7 @@ class: text-center
   Each platform defines its <b>own DomainFiltersModel</b> — so it also writes its <b>own Mappers</b> (always), plus a custom <b>Updater</b> only when the model carries non-filter state to preserve.
 </div>
 
-<div class="note mt-5 max-w-5xl" v-click="3"><b>But the contract stays identical</b> — different presentations, yet every screen drives its list the same way: by observing the <span class="a">Store's currentFilter</span>.</div>
+<div class="note mt-5 max-w-5xl" v-click="3"><b>But the contract stays identical</b> — different presentations, yet every screen drives its list the same way: by observing the <span class="a">Store</span>'s <span class="a">currentFilter</span>.</div>
 
 ---
 layout: center
