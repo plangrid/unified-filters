@@ -303,7 +303,7 @@ class: text-center
 <div class="flow mt-5" v-click="4">
   <div class="fbox dash"><span class="n">Store<span class="sep">·</span>currentFilter</span></div>
   <div class="conn h"></div>
-  <div class="fbox"><span class="n">List query</span></div>
+  <div class="fbox"><span class="n">List Screen</span></div>
   <div class="conn h"></div>
   <div class="fbox"><span class="n">Filtered list</span></div>
 </div>
