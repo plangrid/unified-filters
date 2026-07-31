@@ -272,7 +272,6 @@ class: text-center
   <div class="note" v-click="2">The <span class="a">Holder</span> takes the filter change and dispatches the <span class="a">Updater</span>, alongside analytics.</div>
   <div class="note" v-click="3">The <span class="a">Updater</span> maps it through the <b>DomainFiltersModelMapper</b> and updates the <span class="a">Store</span>.</div>
   <div class="note" v-click="4">The <span class="a">Store</span> maps to <b>FilterQueryParameters</b>, then the <span class="a">Repository</span> serializes &amp; persists it.</div>
-  <div class="note" v-click="5"><span class="a">currentFilter</span> emits — the panel and the list observe that one stream.</div>
 </div>
 
 <div class="flegend" v-click="1">
