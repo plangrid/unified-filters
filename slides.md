@@ -251,12 +251,14 @@ class: text-center
 
 # Applying a filter — inside the framework
 
-<div class="flow mt-8">
+<div class="flow flow-tight mt-8">
   <div class="fbox amber" v-click="1"><span class="n">Filters Panel /<br/>Quick Filters</span></div>
   <div class="conn h" v-click="1"></div>
   <div class="fbox amber" v-click="1"><span class="n">FiltersModel<br/>Holder</span></div>
   <div class="conn h" v-click="2"></div>
   <div class="fbox dash" v-click="2"><span class="n">Updater</span></div>
+  <div class="conn h" v-click="3"></div>
+  <div class="fbox" v-click="3"><span class="n">DomainFilters<br/>ModelMapper</span></div>
   <div class="conn h" v-click="3"></div>
   <div class="fbox dash" v-click="3"><span class="n">Store</span></div>
   <div class="conn h" v-click="4"></div>
@@ -295,12 +297,14 @@ class: text-center
 
 # Entering a screen — the read path
 
-<div class="flow mt-6">
+<div class="flow flow-tight mt-6">
   <div class="fbox amber" v-click="1"><span class="n">Persistence</span></div>
   <div class="conn h" v-click="1"></div>
   <div class="fbox amber" v-click="1"><span class="n">FiltersScope<br/>Repository</span></div>
   <div class="conn h" v-click="2"></div>
   <div class="fbox dash" v-click="2"><span class="n">Store</span></div>
+  <div class="conn h" v-click="3"></div>
+  <div class="fbox" v-click="3"><span class="n">DisplayNames<br/>Resolver</span></div>
   <div class="conn h" v-click="3"></div>
   <div class="fbox dash" v-click="3"><span class="n">FiltersModel<br/>Provider</span></div>
   <div class="conn h" v-click="4"></div>
