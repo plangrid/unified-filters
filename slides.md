@@ -111,6 +111,25 @@ PM track
 </div>
 
 ---
+
+# Onboarding phases
+
+<div class="flow mt-6">
+  <div class="fbox amber" v-click="1"><span class="n">① Unified Filters</span><span class="r">Filters Panel · Quick Filters</span></div>
+  <div class="conn h" v-click="2"></div>
+  <div class="fbox amber" v-click="2"><span class="n">② Saved Filters</span><span class="r">requires ① first</span></div>
+</div>
+
+<div class="grid grid-cols-2 gap-4 mt-8">
+<div class="tile amber" v-click="1"><strong class="a">① Onboard into Unified Filters</strong>
+<div class="text-sm mt-2" style="color:#a8a8b0">The initial integration — <span class="a">Filters Panel</span> and <span class="a">Quick Filters</span> wired to your domain's <span class="a">FiltersScope</span>.</div>
+</div>
+<div class="tile" v-click="2"><strong>② Tap into Saved Filters</strong>
+<div class="text-sm mt-2" style="color:#a8a8b0">Built within the <span class="a">Filters Panel</span>, based on the same <span class="a">FilterQueryParameters</span> model integrated in ①.</div>
+</div>
+</div>
+
+---
 layout: center
 class: text-center
 ---
@@ -179,14 +198,15 @@ A feature team plugs a domain in by **declaring what its filters are** — their
 <div class="flex flex-col gap-3 max-w-5xl">
   <div class="give" v-click="1"><span class="gn">Filters Panel UI</span><span class="gd">The drilldown panel — option lists, selection, apply / clear / reset behavior.</span></div>
   <div class="give" v-click="2"><span class="gn">Quick Filters</span><span class="gd">The preset chip row, plus the filter icon and its active-count badge.</span></div>
-  <div class="give" v-click="3"><span class="gn">Persistence stack</span><span class="gd">Typed, scope-keyed storage — Store → Repository → DB. A domain never writes its own.</span></div>
-  <div class="give" v-click="4"><span class="gn">Name resolution</span><span class="gd">Hydrates persisted filter's options ids back into display names at read time.</span></div>
-  <div class="give" v-click="5"><span class="gn">Analytics</span><span class="gd">Filter events dispatched for you — no wiring needed.</span></div>
+  <div class="give" v-click="3"><span class="gn">Saved Filters</span><span class="gd">Sync, persistence and presentation for viewing and applying a saved filter.</span></div>
+  <div class="give" v-click="4"><span class="gn">Persistence stack</span><span class="gd">Typed, scope-keyed storage — Store → Repository → DB. A domain never writes its own.</span></div>
+  <div class="give" v-click="5"><span class="gn">Name resolution</span><span class="gd">Hydrates persisted filter's options ids back into display names at read time.</span></div>
+  <div class="give" v-click="6"><span class="gn">Analytics</span><span class="gd">Filter events dispatched for you — no wiring needed.</span></div>
 </div>
 
 ---
 
-# The integration seam
+# Quick Filters - The integration seam
 
 <div class="muted mb-4" style="margin-top:-0.6rem">What a feature team authors — plus the provided defaults it can override.</div>
 
@@ -229,23 +249,43 @@ A feature team plugs a domain in by **declaring what its filters are** — their
 </div>
 
 ---
+
+# Saved Filters — the integration seam
+
+<div class="muted mb-4" style="margin-top:-0.6rem">What's provided — and what a feature team must supply.</div>
+
+<div class="flex gap-8" style="height:360px">
+
+<div class="shrink-0" style="width:340px">
+<div class="text-sm muted mb-2 font-bold uppercase tracking-wider">You author</div>
+<div class="flex flex-col gap-1">
+  <div class="chk" v-click="1"><span class="tick">✓</span> DomainSavedFilterDataTransformer</div>
+</div>
+<div class="text-sm muted mt-3 mb-2 font-bold uppercase tracking-wider">Provided</div>
+<div class="flex flex-col gap-1">
+  <div class="chk" v-click="2"><span class="tick">✓</span> Saved Filters Sync</div>
+  <div class="chk" v-click="3"><span class="tick">✓</span> Saved Filters Persistence</div>
+  <div class="chk" v-click="4"><span class="tick">✓</span> Saved Filters Presentation</div>
+</div>
+</div>
+
+<div class="seam"></div>
+
+<div class="flex-1 spotwrap">
+  <div class="spot" v-click="[1,2]"><span class="sn">DomainSavedFilterDataTransformer</span><span class="sd">Takes the saved filter's persisted payload and transforms it into the mobile's <span class="a">FilterQueryParameters</span> model for that <span class="a">FiltersScope</span> — the only piece a feature team writes.</span></div>
+  <div class="spot" v-click="[2,3]"><span class="sn">Saved Filters Sync</span><span class="sd">Brings project and account saved filters definitions down to the device, kept current as they change server-side.</span></div>
+  <div class="spot" v-click="[3,4]"><span class="sn">Saved Filters Persistence</span><span class="sd">Stores the synced saved filters locally, dual-scoped (project / global), ready to list and apply without a network round-trip.</span></div>
+  <div class="spot" v-click="4"><span class="sn">Saved Filters Presentation</span><span class="sd">The UI for browsing and applying a saved filter — consistent across every tool.</span></div>
+</div>
+
+</div>
+
+---
 layout: center
 class: text-center
 ---
 
 <div class="text-4xl font-extrabold" style="color:var(--amber)">How it flows</div>
-
----
-layout: center
-class: text-center
----
-
-<div class="text-2xl font-bold" style="color:var(--amber)">Filters Boundaries</div>
-<div class="muted mt-1">The big-picture data flow &amp; framework / feature-team boundaries</div>
-
-<video controls muted class="mediaframe mx-auto mt-5 max-h-95">
-  <source src="/FiltersFlow.mp4" type="video/mp4" />
-</video>
 
 ---
 
