@@ -3,3 +3,4 @@ dist/
 *.pptx
 ~$*
 .DS_Store
+site/.vitepress/cache/
