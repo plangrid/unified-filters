@@ -494,8 +494,9 @@
    and the stacked two-line pill just reads as an odd line-break. */
 .soon-inline {
   flex-direction: row;
-  margin-left: 0;
+  margin-left: 0.9em;
   margin-right: 0.5em;
+  font-size: 0.42em;
   white-space: nowrap;
 }
 
