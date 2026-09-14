@@ -1,0 +1,256 @@
+/* ---- Unified Filters deck — design system (inspired by a clean dark/amber deck) ---- */
+:root {
+  --amber: #EAB308;
+  --amber-bright: #FBBF24;
+  --amber-soft: #FDE68A;
+  --bg: #0A0A0B;
+  --fg: #E6E6EA;
+  --muted: #8A8A93;
+  --card: #141416;
+  --card-2: #17171A;
+  --border: #26262C;
+  --border-soft: #1E1E24;
+}
+
+/* flat near-black background everywhere, generous margins, humanist sans */
+.slidev-layout {
+  background: var(--bg) !important;
+  color: var(--fg);
+  font-family: 'Overpass', ui-sans-serif, system-ui, sans-serif;
+  padding: 3.4rem 4rem;
+}
+
+/* left-aligned amber section heading, top of slide */
+.slidev-layout h1 {
+  color: var(--amber);
+  font-weight: 800;
+  font-size: 2.5rem;
+  letter-spacing: -0.015em;
+  margin-bottom: 1.6rem;
+  line-height: 1.1;
+}
+.slidev-layout h2 {
+  color: var(--amber);
+  font-weight: 700;
+  font-size: 1.7rem;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.8rem;
+}
+.slidev-layout h3 { color: var(--fg); font-weight: 700; }
+
+.slidev-layout p,
+.slidev-layout li {
+  font-size: 1.32rem;
+  line-height: 1.7;
+  color: #D6D6DC;
+}
+.slidev-layout strong { color: #FFFFFF; font-weight: 700; }
+.slidev-layout code {
+  background: #1b1b1f;
+  border: 1px solid var(--border-soft);
+  border-radius: 6px;
+  padding: 0.05em 0.4em;
+  font-size: 0.9em;
+  color: var(--amber-soft);
+}
+
+/* accent + muted helper spans */
+.a { color: var(--amber); font-weight: 700; }
+.muted { color: var(--muted); }
+
+/* middot separator — the · glyph sits off-centre in its advance box, so equal
+   margins still look lopsided. Center it in a fixed-width box instead. */
+.sep { display: inline-block; width: 1.25em; text-align: center; }
+
+/* the subtle "insight" callout — soft dark card, faint border, roomy */
+.callout {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.4rem 1.7rem;
+  margin-top: 1.6rem;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #D6D6DC;
+}
+
+/* small neutral tiles (invariants, PR cards) */
+.tile {
+  background: var(--card);
+  border: 1px solid var(--border-soft);
+  border-radius: 12px;
+  padding: 0.75rem 0.95rem;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: #C8C8CE;
+}
+.tile strong { color: #fff; }
+.tile ul.tlist { margin-top:.5rem; padding-left:1.15rem; list-style:disc; }
+.tile ul.tlist li { font-size:.84rem !important; line-height:1.4 !important; color:#c8c8ce; margin-bottom:.12rem; }
+.tile ul.tlist li::marker { color:var(--amber); }
+.tile.amber { border-color: #4a3a0a; }
+
+/* clean tables — amber header, hairline rows, no heavy borders */
+.slidev-layout table { border-collapse: collapse; width: 100%; }
+.slidev-layout th {
+  color: var(--amber);
+  text-align: left;
+  font-weight: 700;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.45rem 0.8rem;
+  border-bottom: 1px solid #3A3A42;
+}
+.slidev-layout td {
+  padding: 0.45rem 0.8rem;
+  border-bottom: 1px solid var(--border-soft);
+  font-size: 0.98rem;
+  line-height: 1.4;
+  color: #CFCFD6;
+}
+.slidev-layout td strong { color: #fff; }
+
+/* media frame — rounded + soft shadow, centered */
+.mediaframe {
+  border-radius: 14px;
+  box-shadow: 0 24px 60px -20px rgba(0,0,0,0.8);
+  overflow: hidden;
+}
+
+/* cover */
+.cover-title { font-weight: 800; font-size: 3.6rem; letter-spacing: -0.02em; line-height: 1.05; }
+.cover-sub { color: var(--muted); font-size: 1.4rem; margin-top: 1.2rem; }
+
+/* kill default footer clutter feel */
+.slidev-layout kbd { background:#1b1b1f; border:1px solid var(--border); border-radius:5px; padding:0.05em 0.4em; }
+
+/* mermaid renders into a shadow root (.mermaid host) — center the host;
+   sizing itself is controlled per-diagram via the `scale` option */
+.slidev-layout .mermaid { display: flex; justify-content: center; width: 100%; overflow: visible; }
+
+/* inline code chip — force dark, beat theme/prose defaults */
+.slidev-layout code,
+.slidev-layout p code,
+.slidev-layout li code,
+.slidev-layout td code,
+.slidev-layout .callout code,
+.slidev-layout .tile code {
+  background: #1b1b1f !important;
+  color: var(--amber-soft) !important;
+  border: 1px solid var(--border-soft) !important;
+  border-radius: 6px;
+  padding: 0.05em 0.4em;
+}
+
+/* amber tile titles */
+.tile .a, .tile strong.a { color: var(--amber) !important; }
+
+/* ---- hand-built animated flow system (replaces mermaid) ---- */
+.flow  { display:flex; align-items:center; justify-content:center; gap:.4rem; flex-wrap:nowrap; }
+/* tighter variant for rows with more boxes (keeps a 7-box flow on one line) */
+.flow-tight { gap:.2rem; }
+.flow-tight .conn.h { width:20px; }
+.flow-tight .fbox { padding:.5rem .6rem; }
+.stack { display:flex; flex-direction:column; align-items:center; gap:0; }
+
+.fbox {
+  background:#141416; border:1px solid #3a3a42; border-radius:12px;
+  padding:.5rem .8rem; text-align:center; line-height:1.2; color:#e6e6ea; flex:0 0 auto;
+}
+.fbox.amber { background:#241c07; border-color:var(--amber); }
+.fbox.dim   { background:#101012; border-color:#26262c; color:#9a9aa2; }
+/* provided-but-overridable — a framework default a domain may swap (Store, Updater) */
+.fbox.dash  { background:#241c07; border:1px dashed var(--amber); }
+.fbox.dash .n { color:var(--amber-soft); }
+/* the design's centre — same you-implement grey as the others, spotlighted only by a
+   neutral glow + the ★ tag (no color change, so it reads as the same category) */
+.fbox.heart { box-shadow: 0 0 26px -6px rgba(230,230,234,0.22); }
+.fbox.heart .star { color:var(--amber); font-weight:700; }
+.fbox .n { font-family:'Fira Code',monospace; font-weight:600; font-size:.8rem; color:#e6e6ea; white-space:nowrap; }
+.fbox.amber .n { color:var(--amber-soft); }
+.fbox .r { display:block; font-size:.68rem; color:#8a8a93; margin-top:.2rem; font-family:'Overpass',sans-serif; white-space:nowrap; }
+
+/* horizontal connector with arrowhead */
+.conn { flex:0 0 auto; align-self:center; }
+.conn.h { width:34px; height:2px; background:var(--amber); position:relative; }
+.conn.h::after { content:''; position:absolute; right:-1px; top:-4px;
+  border-left:8px solid var(--amber); border-top:5px solid transparent; border-bottom:5px solid transparent; }
+.conn.h.dim { background:#4a4a52; } .conn.h.dim::after { border-left-color:#4a4a52; }
+/* vertical connector with arrowhead + optional side label */
+.conn-v { width:2px; height:24px; background:var(--amber); position:relative; }
+.conn-v::after { content:''; position:absolute; bottom:-1px; left:-4px;
+  border-top:8px solid var(--amber); border-left:5px solid transparent; border-right:5px solid transparent; }
+.conn-v .lbl { position:absolute; left:16px; top:50%; transform:translateY(-50%); white-space:nowrap; font-size:.72rem; color:#9a9aa2; }
+/* bidirectional vertical connector (translation, not a call) */
+.conn-v.bi::before { content:''; position:absolute; top:-1px; left:-4px;
+  border-bottom:8px solid var(--amber); border-left:5px solid transparent; border-right:5px solid transparent; }
+
+/* flow legend key — explains the box color language */
+.flegend { display:flex; flex-wrap:wrap; gap:.4rem 1rem; align-items:center; justify-content:center; margin-top:1rem; font-size:.68rem; color:#9a9aa2; }
+.flegend .k { display:flex; align-items:center; gap:.38rem; white-space:nowrap; }
+.flegend .sw { width:21px; height:13px; border-radius:4px; background:#141416; border:1px solid #3a3a42; flex:0 0 auto; }
+.flegend .sep { width:auto; margin:0 .18em; }
+.flegend .sw.amber { background:#241c07; border:1px solid var(--amber); }
+.flegend .sw.dash { background:#241c07; border:1px dashed var(--amber); }
+
+/* synced note lines under a flow */
+.flow-notes { display:flex; flex-direction:column; gap:.55rem; }
+.note { font-size:1.02rem; color:#c8c8ce; } .note b { color:#fff; }
+
+/* integration seam divider */
+.seam { border-left:2px dashed var(--amber); align-self:stretch; opacity:.7; }
+
+/* architecture: left-aligned flow column keeps connectors centered under boxes */
+.stack.left { align-items:flex-start; }
+
+/* seam checklist (accumulating) */
+.chk { font-size:1.04rem; color:#c8c8ce; display:flex; gap:.55rem; align-items:center; }
+.chk .tick { color:var(--amber); font-weight:700; }
+/* dashed marker for the "provided — override when…" group (ties to the legend) */
+.chk .dtick { display:inline-block; width:.78rem; height:.78rem; border:1px dashed var(--amber); border-radius:3px; flex:0 0 auto; }
+
+/* seam spotlight — one class detailed at a time */
+.spotwrap { position:relative; }
+.spot { position:absolute; inset:0; display:flex; flex-direction:column; justify-content:center; }
+.spot .sn { font-family:'Fira Code',monospace; font-size:1.45rem; color:var(--amber); font-weight:700; }
+.spot .sd { font-size:0.98rem; color:#d0d0d6; margin-top:.75rem; line-height:1.55; }
+.spot .sd .sov { font-size:0.86rem; line-height:1.5; color:#c2c2c9; }
+.spot .sd .plabel { color:var(--amber); font-weight:700; }
+.spot .sd ul.spotlist { margin-top:.55rem; list-style:none; padding:0; display:flex; flex-direction:column; gap:.5rem; }
+.spot .sd ul.spotlist li { position:relative; padding-left:1.2rem; }
+.spot .sd ul.spotlist li::before { content:'▸'; position:absolute; left:0; color:var(--amber); }
+
+/* dim machinery connector (persistence plumbing, not translation) */
+.conn-v.dimv { background:#4a4a52; }
+.conn-v.dimv::after { border-top-color:#4a4a52; }
+
+/* PM screenshot frames — up to 2 portrait phone shots side by side.
+   Placeholder shows a label; drop in <img> to replace it. */
+.shots { display:flex; gap:1.4rem; align-items:center; justify-content:center; flex:0 0 auto; }
+.shot { width:200px; height:430px; border:1px solid #2e2e36; border-radius:20px; background:#101012;
+  display:flex; align-items:center; justify-content:center; text-align:center; overflow:hidden;
+  color:#5a5a63; font-size:.78rem; line-height:1.4; box-shadow:0 22px 55px -22px rgba(0,0,0,0.8); }
+.shot img { width:100%; height:100%; object-fit:cover; }
+
+/* highlighted "divergence" block — the one place per-platform work happens */
+.diverge { border-left:3px solid var(--amber); background:#241c07; border-radius:10px; padding:.9rem 1.25rem; font-size:1.02rem; line-height:1.55; color:#ececf0; }
+.diverge .dlabel { color:var(--amber); font-weight:700; font-size:.72rem; text-transform:uppercase; letter-spacing:.07em; margin-bottom:.45rem; }
+
+/* "what the framework gives you" cards */
+.give { display:flex; align-items:baseline; gap:1rem; padding:.7rem 1.1rem; border-radius:12px; background:#141416; border:1px solid #1e1e24; }
+.give .gn { font-family:'Fira Code',monospace; color:var(--amber-soft); font-weight:700; font-size:1.02rem; flex:0 0 190px; }
+.give .gd { color:#c8c8ce; font-size:1.04rem; line-height:1.4; }
+
+/* vocabulary slide — 10 rows; tighten density + trim heading so the full table fits */
+.vocab.slidev-layout { padding-top: 2.4rem; }
+.vocab.slidev-layout h1 { font-size: 2.1rem; margin-bottom: 0.9rem; }
+.vocab.slidev-layout th { font-size: 0.74rem; padding: 0.3rem 0.8rem; }
+.vocab.slidev-layout td { font-size: 0.82rem; line-height: 1.3; padding: 0.26rem 0.8rem; }
+
+/* hide Slidev's "press g to jump" goto dialog — it was overlapping the slide on the right */
+#slidev-goto-dialog { display: none !important; }
+
+/* deck-wide motion — every click reveal rises + fades in */
+.slidev-layout .slidev-vclick-target { transition: opacity .45s ease, transform .45s cubic-bezier(.2,.8,.2,1); }
+.slidev-layout .slidev-vclick-hidden  { opacity:0 !important; transform: translateY(12px); }
