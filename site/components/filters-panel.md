@@ -43,7 +43,7 @@ Every domain can configure a **default filter** — the baseline set of filter v
 
 ## Initial Filters
 
-A specific navigation route can also apply its own **route-specific** default filters, distinct from the domain-wide default above and never persisted — see [Initial Filters](../integrations/initial-filters) *(coming soon)* for the full design.
+<span class="soon">Coming<br>soon<span class="hammer">🔨</span></span> A specific navigation route can also apply its own **route-specific** default filters, distinct from the domain-wide default above and never persisted — see [Initial Filters](../integrations/initial-filters) for the full design.
 
 ## Filters persistence
 
