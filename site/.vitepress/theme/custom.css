@@ -490,6 +490,15 @@
   line-height: 1;
 }
 
+/* single-line variant for prose, where there's horizontal room to spare
+   and the stacked two-line pill just reads as an odd line-break. */
+.soon-inline {
+  flex-direction: row;
+  margin-left: 0;
+  margin-right: 0.5em;
+  white-space: nowrap;
+}
+
 /* checklist item on the left highlights, and its matching spot-item detail
    on the right becomes the only one shown. Driven by JS (initSeamHover in
    theme/index.ts) rather than :hover, so the last-hovered pairing sticks
