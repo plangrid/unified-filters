@@ -15,7 +15,8 @@ npm run dev        # http://localhost:3030
 Built and deployed together with [`../site`](../site) — see [`../deploy.sh`](../deploy.sh)
 at the repo root.
 
-Live (Autodesk GitHub login required, no VPN): https://plangrid.github.io/unified-filters/deck/
+Live (Autodesk GitHub login required, no VPN) — run `gh api repos/plangrid/unified-filters/pages --jq .html_url`
+for the current URL, then append `deck/`.
 
 ## Export
 

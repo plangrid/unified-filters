@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
 # Build the deck and the site, then publish both together to the gh-pages branch.
+#
+# This is an internal repo, so GitHub Pages serves it from a random
+# <name>.pages.github.io subdomain (not <org>.github.io/<repo>/) with the
+# content at the subdomain's root — hence deck/site build under /deck/ and
+# /site/, not /unified-filters/deck/ and /unified-filters/site/.
 set -euo pipefail
 
-BASE_ROOT=/unified-filters
-
 echo "==> Building deck"
-(cd deck && npm install && npx slidev build --base "$BASE_ROOT/deck/" --out ../dist/deck)
+(cd deck && npm install && npx slidev build --base /deck/ --out ../dist/deck)
 
 echo "==> Building site"
 (cd site && npm install && npx vitepress build --outDir ../dist/site)
@@ -35,6 +38,7 @@ LC_ALL=C find dist -name '*.html' -print0 | xargs -0 sed -i '' 's/ crossorigin//
 
 npx --yes gh-pages -d dist -b gh-pages -m "Deploy $(date -u +%Y-%m-%dT%H:%M:%SZ)"
 
-echo "Published to gh-pages. Ensure Pages source = gh-pages branch."
-echo "  Deck: https://plangrid.github.io/unified-filters/deck/"
-echo "  Site: https://plangrid.github.io/unified-filters/site/"
+PAGES_URL=$(gh api repos/plangrid/unified-filters/pages --jq .html_url 2>/dev/null || echo "(run: gh api repos/plangrid/unified-filters/pages)")
+echo "Published to gh-pages."
+echo "  Deck: ${PAGES_URL}deck/"
+echo "  Site: ${PAGES_URL}site/"
