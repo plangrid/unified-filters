@@ -1,0 +1,855 @@
+/* pages that disable the right-side outline (via `outline: false`
+   frontmatter) get their content column widened to fill the freed space —
+   VitePress's own has-aside rule caps it at 688px, which stays narrower
+   than the diagrams on this site even after the aside is gone. */
+.VPDoc:not(.has-aside) .content-container {
+  max-width: 960px;
+}
+
+/* VitePress caps the hero tagline at 576px, which wraps this site's longer
+   tagline onto two lines. Widen it so it fits on one. */
+.VPHero .tagline {
+  max-width: 700px;
+}
+
+:root {
+  --vp-c-brand-1: #EAB308;
+  --vp-c-brand-2: #FBBF24;
+  --vp-c-brand-3: #FDE68A;
+  --vp-c-brand-soft: rgba(234, 179, 8, 0.14);
+  /* default 272px feels cramped for this site's longer sidebar item labels
+     (e.g. "Sync Triggering (UD-42 Support)" plus its "Coming soon" badge).
+     --vp-layout-max-width is bumped by the same 112px delta below it, so the
+     extra width comes from the overall page/right margin rather than
+     narrowing the content column. */
+  --vp-sidebar-width: 384px;
+  --vp-layout-max-width: 1552px;
+}
+
+.dark {
+  --vp-c-brand-1: #FBBF24;
+  --vp-c-brand-2: #EAB308;
+  --vp-c-brand-3: #EAB308;
+}
+
+.VPHero .name {
+  background: linear-gradient(120deg, #FBBF24 30%, #EAB308);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* provided / you-author badges reused across integration-seam pages */
+.badge-provided,
+.badge-author {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  margin-bottom: 0.4rem;
+}
+
+.badge-author {
+  color: var(--vp-c-brand-1);
+  background: var(--vp-c-brand-soft);
+  border: 1px solid var(--vp-c-brand-1);
+}
+
+.badge-provided {
+  color: var(--vp-c-text-2);
+  background: var(--vp-c-default-soft);
+  border: 1px dashed var(--vp-c-divider);
+}
+
+.shots {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin: 1.5rem 0;
+}
+
+.shots img {
+  max-height: 420px;
+  border-radius: 10px;
+  border: 1px solid var(--vp-c-divider);
+}
+
+/* simple horizontal flow diagram, reused wherever a pipeline needs to be shown.
+   The doc content column (~624px) is narrower than most diagrams once several
+   boxes are revealed, so scroll horizontally instead of wrapping — wrapping
+   breaks the arrow-follows-box reading order. */
+.flow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  padding-bottom: 0.5rem;
+}
+
+.flow-box {
+  flex-shrink: 0;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg-soft);
+  font-weight: 600;
+  font-size: 0.9rem;
+  white-space: pre-line;
+  text-align: center;
+}
+
+/* opt-in modifier: wraps onto multiple lines instead of scrolling
+   horizontally — for flows whose box labels are full sentences rather
+   than short tags. */
+.flow.wrap {
+  flex-wrap: wrap;
+  overflow-x: visible;
+}
+
+.flow.wrap .flow-box {
+  flex-shrink: 1;
+  max-width: 240px;
+  white-space: normal;
+}
+
+.flow-box.amber {
+  border-color: var(--vp-c-brand-1);
+  background: var(--vp-c-brand-soft);
+}
+
+.flow-box.dashed {
+  border-style: dashed;
+  border-color: var(--vp-c-brand-1);
+  background: var(--vp-c-brand-soft);
+}
+
+/* the deck tints box text amber for both framework-provided (amber) and
+   provided-overridable (dashed) boxes, not just the border/background —
+   plain and "heart" boxes keep neutral text since they're "you implement" */
+.flow-box.amber,
+.flow-box.dashed {
+  color: var(--vp-c-brand-1);
+}
+
+/* the design's centre — same you-implement plain box as the others, spotlighted
+   only by a neutral glow + the ★ tag, so it still reads as "you implement" and
+   doesn't borrow the amber (framework-provided) meaning used elsewhere on the page */
+.flow-box.heart {
+  box-shadow: 0 0 22px -4px var(--vp-c-text-1);
+}
+
+.flow-box .star {
+  color: var(--vp-c-brand-1);
+  font-weight: 700;
+}
+
+.flow-arrow {
+  flex-shrink: 0;
+  color: var(--vp-c-text-3);
+  font-size: 1.2rem;
+}
+
+/* vertical pipeline (architecture diagrams): centered boxes joined by a drawn
+   connector line + arrowhead, not a unicode arrow glyph — some platforms
+   render ↕ / ↓ as colored emoji glyphs instead of plain text, and a plain-text
+   label doesn't stay centered under boxes of differing width. */
+.flow-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1.5rem 0;
+}
+
+.flow-col .flow-box {
+  width: 300px;
+}
+
+.conn-v {
+  width: 2px;
+  height: 28px;
+  background: var(--vp-c-brand-1);
+  opacity: 0.7;
+  position: relative;
+  margin: 0.4rem 0;
+}
+
+.conn-v::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: -4px;
+  border-top: 8px solid var(--vp-c-brand-1);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  opacity: 0.7;
+}
+
+.conn-v.bi::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -4px;
+  border-bottom: 8px solid var(--vp-c-brand-1);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  opacity: 0.7;
+}
+
+.conn-v .lbl {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  font-size: 0.76rem;
+  color: var(--vp-c-text-2);
+  font-family: var(--vp-font-family-mono);
+}
+
+/* box <-> line hover highlighting for vertical pipelines. Box and connector
+   are flat siblings, not nested, so a connector always touches exactly two
+   boxes — hovering either one highlights itself plus every element it
+   touches on both sides. :has() lets a "previous sibling" match a hovered
+   "next sibling", which plain CSS selectors can't express. */
+.flow-col .flow-box,
+.flow-col .conn-v {
+  transition: border-color 0.2s ease, background 0.2s ease,
+    box-shadow 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
+}
+
+.flow-col .flow-box:hover,
+.flow-col .conn-v:hover + .flow-box,
+.flow-col .flow-box:has(+ .conn-v:hover) {
+  border-color: var(--vp-c-brand-1);
+  box-shadow: 0 0 0 3px var(--vp-c-brand-soft);
+  transform: scale(1.03);
+}
+
+.flow-col .conn-v:hover,
+.flow-col .flow-box:hover + .conn-v,
+.flow-col .conn-v:has(+ .flow-box:hover) {
+  opacity: 1;
+  box-shadow: 0 0 6px var(--vp-c-brand-1);
+}
+
+.flow-col .conn-v:hover::after,
+.flow-col .flow-box:hover + .conn-v::after,
+.flow-col .conn-v:has(+ .flow-box:hover)::after,
+.flow-col .conn-v:hover::before,
+.flow-col .flow-box:hover + .conn-v::before,
+.flow-col .conn-v:has(+ .flow-box:hover)::before {
+  opacity: 1;
+}
+
+/* pairs a vertical pipeline with a caption panel that fills the empty space
+   beside it. Every box/connector maps 1:1 (by DOM position) to one caption —
+   :nth-child(N) on the diagram side and on the caption side always agree,
+   since both lists contain only flow-box/conn-v (or flow-note) children in
+   the same order, so there's never a "which caption for this box" ambiguity.
+   No caption is shown until something is actually hovered. */
+.flow-diagram {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin: 1.5rem 0;
+}
+
+.flow-diagram .flow-col {
+  margin: 0;
+}
+
+.flow-notes {
+  flex: 1;
+  min-width: 0;
+  padding: 0 1rem;
+}
+
+.flow-note {
+  display: none;
+  text-align: center;
+  color: var(--vp-c-text-1);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.flow-note b {
+  color: var(--vp-c-text-1);
+}
+
+.flow-diagram:has(.flow-col > *:nth-child(1):hover) .flow-notes .flow-note:nth-child(1) {
+  display: block;
+}
+
+.flow-diagram:has(.flow-col > *:nth-child(2):hover) .flow-notes .flow-note:nth-child(2) {
+  display: block;
+}
+
+.flow-diagram:has(.flow-col > *:nth-child(3):hover) .flow-notes .flow-note:nth-child(3) {
+  display: block;
+}
+
+.flow-diagram:has(.flow-col > *:nth-child(4):hover) .flow-notes .flow-note:nth-child(4) {
+  display: block;
+}
+
+.flow-diagram:has(.flow-col > *:nth-child(5):hover) .flow-notes .flow-note:nth-child(5) {
+  display: block;
+}
+
+.flow-diagram:has(.flow-col > *:nth-child(6):hover) .flow-notes .flow-note:nth-child(6) {
+  display: block;
+}
+
+.flow-diagram:has(.flow-col > *:nth-child(7):hover) .flow-notes .flow-note:nth-child(7) {
+  display: block;
+}
+
+.flow-diagram:has(.flow-col > *:nth-child(8):hover) .flow-notes .flow-note:nth-child(8) {
+  display: block;
+}
+
+.flow-diagram:has(.flow-col > *:nth-child(9):hover) .flow-notes .flow-note:nth-child(9) {
+  display: block;
+}
+
+.flow-diagram:has(.flow-col > *:nth-child(10):hover) .flow-notes .flow-note:nth-child(10) {
+  display: block;
+}
+
+.flow-diagram:has(.flow-col > *:nth-child(11):hover) .flow-notes .flow-note:nth-child(11) {
+  display: block;
+}
+
+.flow-diagram:has(.flow-col > *:nth-child(12):hover) .flow-notes .flow-note:nth-child(12) {
+  display: block;
+}
+
+.flow-diagram:has(.flow-col > *:nth-child(13):hover) .flow-notes .flow-note:nth-child(13) {
+  display: block;
+}
+
+.flow-hint {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--vp-c-text-1);
+  margin-bottom: -0.5rem;
+}
+
+.seam-hint {
+  font-size: 0.85rem;
+  color: var(--vp-c-text-1);
+  margin: 1rem 0;
+  text-align: center;
+}
+
+/* flow-unit groups an arrow + box together without breaking flex layout */
+.flow-unit {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+/* a flow-box can link out (e.g. onboarding-phase boxes linking to their seam
+   page) — display:contents drops the anchor's own box from the layout so
+   the flow-box behaves as if it were still a direct flex child, and the
+   link's default color/underline are neutralized since the box already
+   carries its own text color. */
+.flow-unit a {
+  display: contents;
+  text-decoration: none;
+}
+
+.flow-unit a .flow-box {
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.flow-unit a:hover .flow-box {
+  cursor: pointer;
+  background: var(--vp-c-brand-1);
+  border-color: var(--vp-c-brand-1);
+  color: var(--vp-c-bg);
+}
+
+/* wide spot area used by the integration-seam pages.
+   min-width:0 overrides the flex item default of min-width:auto — without
+   it, a long unbroken identifier (e.g. DomainSavedFilterDataTransformer)
+   forces this column wider than its share and overflows the page. */
+.spot-area {
+  flex: 1;
+  min-width: 0;
+  min-height: 220px;
+}
+
+.spot-item .sn {
+  overflow-wrap: break-word;
+}
+
+.seam-layout {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  margin: 1.5rem 0;
+}
+
+.seam-checklist {
+  flex-shrink: 0;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.seam-heading {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--vp-c-text-3);
+  margin: 0.9rem 0 0.4rem;
+}
+
+.seam-heading:first-child {
+  margin-top: 0;
+}
+
+.seam-divider {
+  align-self: stretch;
+  border-left: 2px dashed var(--vp-c-brand-1);
+  opacity: 0.6;
+}
+
+.chk {
+  font-size: 0.95rem;
+  color: var(--vp-c-text-1);
+  display: flex;
+  gap: 0.55rem;
+  align-items: center;
+  padding: 0.28rem 0.4rem;
+  margin: 0 -0.4rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.chk .tick {
+  color: var(--vp-c-brand-1);
+  font-weight: 700;
+}
+
+.chk .dtick {
+  display: inline-block;
+  width: 0.72rem;
+  height: 0.72rem;
+  border: 1px dashed var(--vp-c-brand-1);
+  border-radius: 3px;
+  flex: 0 0 auto;
+}
+
+.opt {
+  font-size: 0.8em;
+  font-weight: 400;
+  color: var(--vp-c-text-3);
+}
+
+/* a tiny "coming soon" pill, stacked over two lines so its own footprint
+   stays narrow — the sidebar and the prev/next footer both have more
+   vertical room to spare than horizontal. Colored with the site's brand
+   yellow so it reads as a status flag, not a warning. */
+.soon {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  margin-left: 0.6em;
+  padding: 0.1em 0.3em;
+  font-size: 0.62em;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  text-align: center;
+  text-transform: uppercase;
+  vertical-align: middle;
+  color: var(--vp-c-brand-1);
+  background: transparent;
+  border: 1px solid var(--vp-c-brand-1);
+  border-radius: 4px;
+  transform: rotate(-8deg);
+}
+
+/* hangs off the pill's top-right corner instead of taking up space inside
+   it, so the badge itself can stay small while the hammer stays visible. */
+.soon .hammer {
+  position: absolute;
+  top: -0.55em;
+  right: -0.35em;
+  font-size: 1.8em;
+  line-height: 1;
+}
+
+/* checklist item on the left highlights, and its matching spot-item detail
+   on the right becomes the only one shown. Driven by JS (initSeamHover in
+   theme/index.ts) rather than :hover, so the last-hovered pairing sticks
+   when the mouse leaves the list instead of snapping back to the first
+   item — mouseenter moves .is-active, nothing un-sets it on mouseleave. */
+.chk.is-active {
+  background: var(--vp-c-brand-soft);
+}
+
+.spot-area .spot-item {
+  display: none;
+}
+
+.spot-area .spot-item.is-active {
+  display: block;
+}
+
+/* only one spot-item is ever displayed (see the show/hide rules above), so
+   there's no stacked list to separate with a border anymore */
+.spot-item {
+  padding-bottom: 0;
+  margin-bottom: 0;
+  border-bottom: none;
+}
+
+.spot-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.spot-item .sn {
+  font-family: var(--vp-font-family-mono);
+  font-size: 1.15rem;
+  color: var(--vp-c-brand-1);
+  font-weight: 700;
+  display: block;
+}
+
+.spot-item .sd {
+  font-size: 0.92rem;
+  color: var(--vp-c-text-2);
+  margin-top: 0.5rem;
+  line-height: 1.55;
+}
+
+.spot-item .plabel {
+  color: var(--vp-c-brand-1);
+  font-weight: 700;
+}
+
+.spot-item .spotlist {
+  margin-top: 0.5rem;
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.spot-item .spotlist li {
+  position: relative;
+  padding-left: 1.1rem;
+}
+
+.spot-item .spotlist li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--vp-c-brand-1);
+}
+
+/* "what the framework gives you" style feature rows */
+.give {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.7rem 1.1rem;
+  border-radius: 12px;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  margin-bottom: 0.5rem;
+}
+
+h3 + .give {
+  margin-top: 1rem;
+}
+
+.give .gn {
+  font-family: var(--vp-font-family-mono);
+  color: var(--vp-c-brand-1);
+  font-weight: 700;
+  font-size: 0.95rem;
+  flex: 0 0 170px;
+}
+
+.give .gd {
+  color: var(--vp-c-text-2);
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+/* the whole box is clickable — highlight it like the tile-card/flow-box
+   links elsewhere on the site (border/background, not a solid fill, so
+   the muted .gd description text stays readable on hover) */
+.vp-doc .give-link {
+  display: block;
+  text-decoration: none;
+}
+
+.give-link .give {
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.give-link:hover .give {
+  cursor: pointer;
+  border-color: var(--vp-c-brand-1);
+  background: var(--vp-c-brand-soft);
+}
+
+/* onboarding-style numbered tiles */
+.tile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.tile-card {
+  padding: 0.9rem 1.1rem;
+  border-radius: 12px;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  /* grid items default to min-width:auto, so a long unbroken identifier
+     (e.g. FiltersDisplayNamesResolver) would otherwise force its column
+     wider than its fair 1fr share and overflow the page */
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+.tile-card.amber {
+  border-color: var(--vp-c-brand-1);
+}
+
+.tile-card .tile-title {
+  font-weight: 700;
+}
+
+.tile-card .tile-title.a {
+  color: var(--vp-c-brand-1);
+}
+
+.tile-card .tile-desc {
+  font-size: 0.88rem;
+  color: var(--vp-c-text-2);
+  margin-top: 0.5rem;
+}
+
+/* a tile-card can link out (e.g. filter types linking to their Figma node) —
+   same pattern as the onboarding-phase flow-box links: display:contents
+   drops the anchor's own box from the grid so the tile-card still behaves
+   like a direct grid item, and the border/background highlight (rather than
+   a solid fill) keeps the muted tile-desc text readable on hover. */
+.tile-grid a {
+  display: contents;
+  text-decoration: none;
+}
+
+.tile-grid a .tile-card {
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.tile-grid a:hover .tile-card {
+  cursor: pointer;
+  border-color: var(--vp-c-brand-1);
+  background: var(--vp-c-brand-soft);
+}
+
+/* narrative "note" rows used in flow walkthroughs */
+.note-row {
+  padding: 0.6rem 0;
+  color: var(--vp-c-text-1);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  border-bottom: 1px solid var(--vp-c-divider);
+}
+
+.note-row:last-child,
+.note-row:has(+ h2),
+.note-row:has(+ hr) {
+  border-bottom: none;
+}
+
+.note-row b {
+  color: var(--vp-c-brand-1);
+}
+
+/* short, recurring framework-owned nouns (Store, Repository, Provider, Updater,
+   Filters Panel, Quick Filters, …) get the accent color wherever they're
+   mentioned in prose — same convention as the Slidev deck's `.a` class. A
+   plain `<b>` stays reserved for domain/user-authored terms (FilterQueryParameters,
+   a custom resolver, …) so the accent doesn't get diluted across every bolded word. */
+.a {
+  color: var(--vp-c-brand-1);
+  font-weight: 700;
+}
+
+.flegend {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 1rem;
+  font-size: 0.82rem;
+  color: var(--vp-c-text-3);
+}
+
+.flegend .k {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.flegend .sw {
+  display: inline-block;
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 3px;
+  border: 1px solid var(--vp-c-divider);
+}
+
+.flegend .sw.amber {
+  background: var(--vp-c-brand-soft);
+  border-color: var(--vp-c-brand-1);
+}
+
+.flegend .sw.dash {
+  background: transparent;
+  border: 1px dashed var(--vp-c-brand-1);
+}
+
+/* VitePress's default .vp-doc h2 carries a 48px margin-top before its own
+   border-top divider line — that's the big empty gap under the hero, not
+   the wrapper margin on .home-section itself. Trim it for the first
+   section only, right under the hero. */
+.home-section:first-of-type h2 {
+  margin-top: 0;
+}
+
+/* glossary tooltip — .vitepress/theme/index.ts tags every `code` span whose
+   text matches a known identifier with data-tooltip + this class. Pure CSS
+   popover (no JS positioning) so it works the same on every page. */
+.has-tooltip {
+  position: relative;
+  cursor: help;
+  border-bottom: 1px dotted var(--vp-c-text-3);
+}
+
+.has-tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 8px);
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: 280px;
+  padding: 0.55rem 0.75rem;
+  border-radius: 8px;
+  background: var(--vp-c-bg-elv);
+  color: var(--vp-c-text-1);
+  font-family: var(--vp-font-family-base);
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1.45;
+  text-align: left;
+  white-space: normal;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--vp-c-divider);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.12s ease;
+  z-index: 50;
+  pointer-events: none;
+}
+
+.has-tooltip:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* brand icon in front of a Reference-page link (Atlassian for wikis, Slack
+   for the channel) — sized to sit on the text baseline like a favicon. */
+.ref-icon {
+  display: inline-flex;
+  vertical-align: -3px;
+  margin-right: 0.35em;
+}
+
+.ref-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.ref-icon.atlassian svg {
+  fill: #0052CC;
+}
+
+
+.ref-icon.figma svg {
+  width: 11px;
+  height: 16px;
+}
+
+.ref-icon.lucid svg {
+  fill: #F73029;
+}
+
+/* platform tags on the Changelog page — which repo path a change touched */
+.ptag {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  margin-right: 0.4em;
+  white-space: nowrap;
+}
+
+.ptag.pgf {
+  color: #A78BFA;
+  background: rgba(167, 139, 250, 0.12);
+  border: 1px solid rgba(167, 139, 250, 0.45);
+}
+
+.ptag.android,
+.ptag.ios {
+  padding: 0.28rem;
+  line-height: 0;
+  vertical-align: -4px;
+}
+
+.ptag.android {
+  color: #4ADE80;
+  background: rgba(74, 222, 128, 0.12);
+  border: 1px solid rgba(74, 222, 128, 0.45);
+}
+
+.ptag.ios {
+  color: #E5E7EB;
+  background: rgba(229, 231, 235, 0.1);
+  border: 1px solid rgba(229, 231, 235, 0.35);
+}
+
+.ptag svg {
+  width: 12px;
+  height: 12px;
+  fill: currentColor;
+  display: block;
+}
+
+.changelog-entry {
+  margin: 0.5rem 0;
+}
