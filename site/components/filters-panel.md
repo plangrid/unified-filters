@@ -37,6 +37,14 @@ Two distinct actions:
 <div class="note-row"><b>Clear All</b> — clears every filter's selection back to empty. Shown whenever any filter is active, regardless of domain.</div>
 <div class="note-row"><b>Reset</b> — restores the domain's original/default filter configuration, which may itself be non-empty (e.g. a default preset). Only shown for domains that opt into reset support — not every domain has a meaningful default to reset to.</div>
 
+## Default filter
+
+Every domain can configure a **default filter** — the baseline set of filter values applied when a user has nothing saved yet, and restored by **Reset** (see above). It doesn't have to be empty: a domain can default to a meaningful preset (e.g. "open items assigned to me") rather than "no filters applied" — once the user changes any filter, that change is saved like any other, the default is just the starting point.
+
+## Initial Filters
+
+A specific navigation route can also apply its own **route-specific** default filters, distinct from the domain-wide default above and never persisted — see [Initial Filters](../integrations/initial-filters) *(coming soon)* for the full design.
+
 ## Filters persistence
 
 Every filter selection made in the panel is saved automatically — it survives app restarts and stays consistent with the rest of the framework, so users never lose their filters between sessions.
