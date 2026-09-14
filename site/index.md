@@ -12,9 +12,9 @@ hero:
 ## What ships to users
 
 <div class="tile-grid" style="grid-template-columns: 1fr 1fr 1fr">
-<a href="/components/filters-panel"><div class="tile-card"><div class="tile-title">Filters Panel</div><div class="tile-desc">The full drilldown panel — now unified across every tool, on both iOS and Android.</div></div></a>
-<a href="/components/quick-filters"><div class="tile-card"><div class="tile-title">Quick Filters</div><div class="tile-desc">One-tap presets for faster filtering.</div></div></a>
-<a href="/components/saved-filters"><div class="tile-card"><div class="tile-title">Saved Filters</div><div class="tile-desc">Faster access to commonly used filters inside a project or account.</div></div></a>
+<a href="./components/filters-panel"><div class="tile-card"><div class="tile-title">Filters Panel</div><div class="tile-desc">The full drilldown panel — now unified across every tool, on both iOS and Android.</div></div></a>
+<a href="./components/quick-filters"><div class="tile-card"><div class="tile-title">Quick Filters</div><div class="tile-desc">One-tap presets for faster filtering.</div></div></a>
+<a href="./components/saved-filters"><div class="tile-card"><div class="tile-title">Saved Filters</div><div class="tile-desc">Faster access to commonly used filters inside a project or account.</div></div></a>
 </div>
 
 </div>
@@ -24,9 +24,9 @@ hero:
 ## How you integrate
 
 <div class="tile-grid" style="grid-template-columns: 1fr 1fr 1fr">
-<a href="/integrations/"><div class="tile-card amber"><div class="tile-title a">Onboarding phases</div><div class="tile-desc">See the phases your domain moves through.</div></div></a>
-<a href="/integrations/integrate-filters-skill"><div class="tile-card amber"><div class="tile-title a">Integration skill</div><div class="tile-desc">Use the skill to kickstart your integration.</div></div></a>
-<a href="/architecture/"><div class="tile-card amber"><div class="tile-title a">Architecture</div><div class="tile-desc">See how the pieces fit together.</div></div></a>
+<a href="./integrations/"><div class="tile-card amber"><div class="tile-title a">Onboarding phases</div><div class="tile-desc">See the phases your domain moves through.</div></div></a>
+<a href="./integrations/integrate-filters-skill"><div class="tile-card amber"><div class="tile-title a">Integration skill</div><div class="tile-desc">Use the skill to kickstart your integration.</div></div></a>
+<a href="./architecture/"><div class="tile-card amber"><div class="tile-title a">Architecture</div><div class="tile-desc">See how the pieces fit together.</div></div></a>
 </div>
 
 </div>
