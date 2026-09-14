@@ -3,7 +3,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: 'Unified Filters',
   description: 'One shared filtering contract, two platforms, every filterable surface.',
-  base: '/site/',
+  base: '/unified-filters/site/',
   cleanUrls: true,
   lastUpdated: true,
 
