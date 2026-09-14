@@ -1,5 +1,9 @@
 # Changelog
 
+## 8.13.0 (2026-09-14)
+
+<div class="changelog-entry"><span class="ptag pgf">PGF</span> Add <code>SavedFiltersStoreImpl</code> and repository implementations — <code>ProjectSavedFiltersRepositoryImpl</code>/<code>GlobalSavedFiltersRepositoryImpl</code> behind a <code>CompositeSavedFiltersRepository</code>, wired into <code>GlobalObjectRepository</code>/<code>ProjectObjectRepository</code></div>
+
 ## 8.12.1 (2026-09-10)
 
 <div class="changelog-entry"><span class="ptag pgf">PGF</span> Add SavedFilters contracts and repository-seam split</div>
