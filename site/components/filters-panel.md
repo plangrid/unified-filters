@@ -41,9 +41,9 @@ Two distinct actions:
 
 Every domain can configure a **default filter** — the baseline set of filter values applied when a user has nothing saved yet, and restored by **Reset** (see above). It doesn't have to be empty: a domain can default to a meaningful preset (e.g. "open items assigned to me") rather than "no filters applied" — once the user changes any filter, that change is saved like any other, the default is just the starting point.
 
-## Initial Filters
+## Initial Filters <span class="soon soon-inline">Coming soon<span class="hammer">🔨</span></span> {#initial-filters}
 
-<span class="soon soon-inline">Coming soon<span class="hammer">🔨</span></span> A specific navigation route can also apply its own **route-specific** default filters, distinct from the domain-wide default above and never persisted — see [Initial Filters](../integrations/initial-filters) for the full design.
+A specific navigation route can also apply its own **route-specific** default filters, distinct from the domain-wide default above and never persisted — see [Initial Filters](../integrations/initial-filters) for the full design.
 
 ## Filters persistence
 
