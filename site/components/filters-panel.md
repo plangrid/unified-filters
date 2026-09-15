@@ -28,7 +28,7 @@ The [Filters Panel Figma file](https://www.figma.com/design/oHi6w955NY5Uf4TpIyYL
 
 ## Filter Icons
 
-Each filter can optionally be configured with an icon next to its label. It's all-or-nothing per panel: icons are shown only when *every* filter has one. If any filter lacks an icon, all icons are hidden.
+Each filter can optionally be configured with an icon next to its label. It's all-or-nothing per panel: icons are shown only when *every* filter has one. If any filter lacks an icon, all icons are hidden. [Custom Fields](#custom-fields) are excluded from this check — they never carry icons, and their absence doesn't hide icons on the rest of the panel's filters.
 
 ## Custom Fields
 
