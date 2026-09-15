@@ -26,6 +26,10 @@ Every filter in the panel is one of eight built-in types — feature teams pick 
 
 The [Filters Panel Figma file](https://www.figma.com/design/oHi6w955NY5Uf4TpIyYLbJ/%E2%9D%96-ACC-DS-%7C-Mobile--iOS---Android-?node-id=50657-7277&p=f&t=ti99r5Tq3uhD6Zrh-0) is the design source of truth for every one of these types — see also [Reference](../reference/) for the rest of the source material.
 
+## Filter Icons
+
+Each filter can optionally be configured with an icon next to its label. It's all-or-nothing per panel: icons are shown only when *every* filter has one. If any filter lacks an icon, all icons are hidden.
+
 ## Custom Fields
 
 Custom fields are supported in the panel just like any built-in filter. Up to 10 (defaults to 10, configurable), they're displayed in-place alongside the rest; past that, a custom fields selection screen lets users choose which ones participate in filtering.
